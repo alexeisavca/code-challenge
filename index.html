@@ -23,6 +23,10 @@
                 {
                     description: "Given an IPv4 address and a subnet mask, compute the network, broadcast and first/last host addresses",
                     difficulty: "easy"
+                },
+                {
+                    description: "Bellman-Ford simulation(at least five vertices)",
+                    difficulty: "medium"
                 }
             ];
             var LANGUAGES = [
@@ -33,7 +37,15 @@
                 $scope.medium = true;
                 $scope.hard = true;
                 $scope.search = function(){
-                    $scope.challenge = CHALLENGES[0];
+                    var filtered = CHALLENGES.filter(function(challenge){
+                        switch(challenge.difficulty){
+                            case "easy": return $scope.easy;
+                            case "medium": return $scope.medium;
+                            case "hard": return $scope.hard;
+                        }
+                    });
+                    var index = Math.floor(Math.random() * filtered.length);
+                    $scope.challenge = filtered[index];
                 };
                 $scope.search();
             })
