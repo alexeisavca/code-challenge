@@ -7,17 +7,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     </head>
     <body>
-        <style>
-            header{
-                position: relative;
-            }
-
-            header form{
-                position: absolute;
-                bottom: 20px;
-                right: 0;
-            }
-        </style>
         <script>
             var CHALLENGES = [
                 {
@@ -297,6 +286,26 @@
                 }
             })
         </script>
+        <style>
+            .container{
+                height: 100vh;
+                position: relative;
+            }
+            header{
+                position: relative;
+            }
+
+            header form{
+                position: absolute;
+                bottom: 20px;
+                right: 0;
+            }
+
+            #main-footer{
+                position: absolute;
+                bottom: 10px;
+            }
+        </style>
         <div class="container" ng-app="CodeChallenge">
             <div class="row" ng-controller="App">
                 <header class="page-header col-sm-12">
@@ -339,13 +348,6 @@
                         </footer>
                     </blockquote>
                     <p>
-
-
-                    </p>
-                    <p>
-
-                    </p>
-                    <p>
                         <button class="btn btn-default" ng-click="search()">Nope</button>
                         <button class="btn btn-default" ng-click="searchLanguage()">Suggest a language</button>
                         <button class="btn btn-default" ng-if="language && language.platforms" ng-click="searchPlatform()">
@@ -365,11 +367,9 @@
                         </span>
                     </p>
                 </section>
-                <section class="col-sm-12">
-                    Don't mind me, just trying to make some beer money here.
-                </section>
-                <footer class="col-sm-12">
-                    Alexei Savca 2016, Whatever The Fuck Licence
+                <footer id="main-footer" class="col-sm-12">
+                    Alexei Savca, 2016, Whatever the fuck licence
+                    <a class="pull-right" href="">Contribute</a>
                 </footer>
             </div>
         </div>
