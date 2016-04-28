@@ -1,0 +1,23 @@
+{
+  "name": "code-challenge",
+  "version": "1.0.0",
+  "description": "Bored? Learning a new language? Need a challenge? Code challenge.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexeisavca/code-challenge.git"
+  },
+  "keywords": [
+    "code",
+    "challenge"
+  ],
+  "author": "Alexei Savca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexeisavca/code-challenge/issues"
+  },
+  "homepage": "https://github.com/alexeisavca/code-challenge#readme"
+}
