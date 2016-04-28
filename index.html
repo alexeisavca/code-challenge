@@ -30,7 +30,94 @@
                 }
             ];
             var LANGUAGES = [
-
+                {
+                    name: "C",
+                    platforms: [
+                        {
+                            name: "Windows",
+                            frameworks: [
+                                    "qt"
+                            ]
+                        },
+                        {
+                            name: "Linux",
+                            frameworks: [
+                                "qt"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "C++",
+                    platforms: [
+                        {
+                            name: "Windows",
+                            frameworks: [
+                                "qt"
+                            ]
+                        },
+                        {
+                            name: "Linux",
+                            frameworks: [
+                                "qt"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "Java",
+                    platforms: [
+                        {
+                            name: "Android"
+                        },
+                        {
+                            name: "Desktop"
+                        },
+                        {
+                            name: "Server"
+                        },
+                        {
+                            name: "Browser"
+                        }
+                    ]
+                },
+                {
+                    name: "JavaScript",
+                    platforms: [
+                        {
+                            name: "Browser",
+                            frameworks: [
+                                "Angular",
+                                "React",
+                                "VanillaJS"
+                            ]
+                        },
+                        {
+                            name: "Node.js",
+                            frameworks: [
+                                "Express"
+                            ]
+                        },
+                        {
+                            name: "Mobile"
+                        }
+                    ]
+                },
+                {
+                    name: "PHP"
+                },
+                {
+                    name: "Ruby"
+                },
+                {
+                    name: "Python"
+                },
+                {
+                    name: "ELM"
+                },
+                {
+                    name: "Haskell"
+                }
             ];
             angular.module("CodeChallenge", []).controller("App", function($scope){
                 $scope.easy = true;
@@ -48,6 +135,20 @@
                     $scope.challenge = filtered[index];
                 };
                 $scope.search();
+                $scope.searchLanguage = function(){
+                    $scope.language = LANGUAGES[Math.floor(Math.random() * LANGUAGES.length)]
+                    $scope.platform = null;
+                    $scope.framework = null;
+                };
+                $scope.searchPlatform = function(){
+                    var index = Math.floor(Math.random() * $scope.language.platforms.length);
+                    $scope.platform = $scope.language.platforms[index]
+                    $scope.framework = null;
+                };
+                $scope.searchFramework = function(){
+                    var index = Math.floor(Math.random() * $scope.platform.frameworks.length);
+                    $scope.framework = $scope.platform.frameworks[index];
+                }
             })
         </script>
         <div class="container" ng-app="CodeChallenge">
@@ -68,30 +169,52 @@
                 <section class="col-sm-12">
                     <blockquote>
                         {{challenge.description}}
+                        <footer>
+                            <strong>Difficulty:</strong>
+                            <span ng-switch on="challenge.difficulty">
+                                <span ng-switch-when="easy">
+                                    <i style="background: green; display: inline-block; width: 1em; height: 1em"></i> Easy
+                                </span>
+                                <span ng-switch-when="medium">
+                                    <i style="background: yellow; display: inline-block; width: 1em; height: 1em"></i> Medium
+                                </span>
+                                <span ng-switch-when="hard">
+                                    <i style="background: red; display: inline-block; width: 1em; height: 1em"></i> Hard
+                                </span>
+                            </span>
+                        </footer>
+                        <footer>
+                            <strong>Bonus points:</strong>
+                            <ul>
+                                <li>with your hands tied behind your back</li>
+                            </ul>
+                        </footer>
                     </blockquote>
                     <p>
-                        <strong>Difficulty:</strong>
-                        <span ng-switch on="challenge.difficulty">
-                            <span ng-switch-when="easy">
-                                <i style="background: green; display: inline-block; width: 1em; height: 1em"></i> Easy
-                            </span>
-                            <span ng-switch-when="medium">
-                                <i style="background: yellow; display: inline-block; width: 1em; height: 1em"></i> Medium
-                            </span>
-                            <span ng-switch-when="hard">
-                                <i style="background: red; display: inline-block; width: 1em; height: 1em"></i> Hard
-                            </span>
-                        </span>
+
+
                     </p>
                     <p>
-                        <strong>Bonus points:</strong>
-                        <ul>
-                            <li>with your hands tied behind your back</li>
-                        </ul>
+
                     </p>
                     <p>
                         <button class="btn btn-default" ng-click="search()">Nope</button>
-                        <button class="btn btn-default">Suggest a language</button>
+                        <button class="btn btn-default" ng-click="searchLanguage()">Suggest a language</button>
+                        <button class="btn btn-default" ng-if="language && language.platforms" ng-click="searchPlatform()">
+                            Suggest a platform
+                        </button>
+                        <button class="btn btn-default" ng-if="platform && platform.frameworks" ng-click="searchFramework()">
+                            Suggest a framework
+                        </button>
+                    </p>
+                    <p ng-if="language">
+                        How about you do that in <mark>{{language.name}}</mark>
+                        <span ng-if="platform">
+                            for <mark>{{platform.name}}</mark>
+                        </span>
+                        <span ng-if="framework">
+                            using <mark>{{framework}}</mark>
+                        </span>
                     </p>
                 </section>
                 <section class="col-sm-12">
