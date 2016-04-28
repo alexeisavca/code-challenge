@@ -27,6 +27,29 @@
                 {
                     description: "Bellman-Ford simulation(at least five vertices)",
                     difficulty: "medium"
+                },
+                {
+                    description: "BMI calculator(CLI or GUI)",
+                    difficulty: "easy"
+                },
+                {
+                    description: "Sorting algorithms + visualization",
+                    difficulty: "easy"
+                },
+                {
+                    description: "String to ASCII/Unicode art converter",
+                    difficulty: "easy"
+                },
+                {
+                    description: "Count word occurrences in a text file",
+                    difficulty: "easy"
+                },
+                {
+                    description: "An assembly-like language and a VM for it",
+                    difficulty: "hard",
+                    bonus: [
+                            "make a game for it"
+                    ]
                 }
             ];
             var LANGUAGES = [
@@ -183,10 +206,12 @@
                                 </span>
                             </span>
                         </footer>
-                        <footer>
+                        <footer ng-if="challenge.bonus">
                             <strong>Bonus points:</strong>
                             <ul>
-                                <li>with your hands tied behind your back</li>
+                                <li ng-repeat="bonus in challenge.bonus">
+                                    {{bonus}}
+                                </li>
                             </ul>
                         </footer>
                     </blockquote>
