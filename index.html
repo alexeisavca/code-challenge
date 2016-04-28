@@ -55,7 +55,7 @@
                 <header class="page-header col-sm-12">
                     <form class="form-inline" ng-submit="search()">
                         <div class="form-group">
-                            <label>Challenge difficulty:</label>
+                            <label>Search:</label>
                             <input type="checkbox" ng-model="easy"> Easy
                             <input type="checkbox" ng-model="medium"> Medium
                             <input type="checkbox" ng-model="hard"> Hard
@@ -88,6 +88,10 @@
                         <ul>
                             <li>with your hands tied behind your back</li>
                         </ul>
+                    </p>
+                    <p>
+                        <button class="btn btn-default" ng-click="search()">Nope</button>
+                        <button class="btn btn-default">Suggest a language</button>
                     </p>
                 </section>
                 <section class="col-sm-12">
