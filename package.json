@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/alexeisavca/code-challenge/issues"
   },
-  "homepage": "https://github.com/alexeisavca/code-challenge#readme"
+  "homepage": "https://github.com/alexeisavca/code-challenge#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
 }
